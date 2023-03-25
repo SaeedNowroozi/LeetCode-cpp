@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+       std::queue<TreeNode*> my_queue;
+       bool res = true;
+       int root1, left = INT_MIN, right = INT_MAX;
+       int k=0;
+       my_queue.push(root);
+       while(my_queue.size() > 0)
+       {
+           TreeNode* currentNode = my_queue.front();
+           my_queue.pop();
+           root1 = currentNode->val;
+           if(currentNode->left != nullptr){
+           my_queue.push(currentNode->left);
+           left = currentNode->left->val;
+           }
+           if(currentNode->right != nullptr){
+           my_queue.push(currentNode->right);
+           right = currentNode->right->val; 
+           }
+           if(root1 <= left || root1 >= right)
+           return false;
+           left = INT_MIN;
+           right = INT_MAX;                
+       }
+       return true;
+    }
+};
