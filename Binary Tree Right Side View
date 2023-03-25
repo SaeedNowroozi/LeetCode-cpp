@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+         std::queue<TreeNode*> myqueue;
+          vector<int> res;
+         if(root == nullptr) return res;
+         myqueue.push(root);
+         while(myqueue.size() > 0)
+         {
+           TreeNode* currentNode = myqueue.front();
+           myqueue.pop();
+           res.push_back(currentNode->val);
+           if(currentNode->left != nullptr)
+           {
+              
+            if(currentNode->right == nullptr)
+             myqueue.push(currentNode->left);  
+           }
+           if(currentNode->right != nullptr) 
+           {
+            myqueue.push(currentNode->right);  
+           }
+
+         }
+         return res;
+    }
+};
