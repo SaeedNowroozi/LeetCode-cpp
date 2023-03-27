@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+      std::queue<TreeNode*> myqueue;
+          set<int> s;
+           myqueue.push(root);
+         while(myqueue.size() > 0)
+         {
+           TreeNode* currentNode = myqueue.front();
+           myqueue.pop();
+           s.insert(currentNode->val);
+           if(currentNode->left != nullptr)
+                        myqueue.push(currentNode->left);  
+           
+           if(currentNode->right != nullptr) 
+                       myqueue.push(currentNode->right);  
+           }
+        auto it = s.begin();
+        for (int i = 0; i < k - 1; i++)
+         it++;
+        return *it;
+        }
+ };
