@@ -1,0 +1,6 @@
+delete an item
+ auto it = std::find(array.begin(), array.end(), item );
+           if(it != array.end())
+               array.erase(it);
+delete all an item 
+array.erase(remove(array.begin(), array.end(), array[pointer1]), array.end());
