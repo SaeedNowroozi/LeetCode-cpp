@@ -1,0 +1,9 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int> m;
+        for(auto i:nums) m[i]++;
+        pair<int,int> k = *max_element(m.begin(),m.end(),[](const auto & i, const auto & j){return i.second < j.second;});
+        return k.first;
+    }
+};
